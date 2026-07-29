@@ -8,8 +8,8 @@ import type { User,UserPayload, CustomRequest } from "../libs/types.ts";
 // import database
 import { users, reset_users, enrollments } from "../db/db.ts";
 import { success } from "zod";
-import { zStudentId } from "@src/libs/zodValidators.ts";
-import { zCoursePutBody } from "@src/libs/zodValidators.ts";
+import { zStudentId } from "@src/libs/zodValidators.js";
+import { zCoursePutBody } from "@src/libs/zodValidators.js";
 const router = Router();
 
 // GET /api/v2/users
@@ -29,7 +29,7 @@ router.get("/users", (req: Request, res: Response) => {
     })
   }
   const jwt_secret = process.env.JWT_SECRET;
-  jwt.verify(token,jwt_secret,(err,payload) =>{
+  jwt.verify(token,jwt_secret||"this_is_my_awesome_secret_key",(err,payload) =>{
     if(err){
       return res.status(403).json({
       success:false,
@@ -86,7 +86,7 @@ router.post("/users/login", (req: Request, res: Response) => {
       studentsId :user.studentId,
       role : user.role
     },
-    jwt_secret,
+    jwt_secret||"this_is_my_awesome_secret_key",
     {expiresIn :"30m"}
   );
   //    (optional: save the token as part of User data)
@@ -157,7 +157,7 @@ router.post("/enrollments", (req: Request, res:Response)=>{
     })
   }
   const jwt_secret = process.env.JWT_SECRET;
-  jwt.verify(token,jwt_secret,(err,payload) =>{
+  jwt.verify(token,jwt_secret||"this_is_my_awesome_secret_key",(err,payload) =>{
     if(err){
       return res.status(403).json({
       success:false,
@@ -203,7 +203,7 @@ router.delete("/enrollments", (req: Request, res:Response)=>{
     })
   }
   const jwt_secret = process.env.JWT_SECRET;
-  jwt.verify(token,jwt_secret,(err,payload) =>{
+  jwt.verify(token,jwt_secret||"this_is_my_awesome_secret_key",(err,payload) =>{
     if(err){
       return res.status(403).json({
       success:false,
