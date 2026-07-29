@@ -2,14 +2,14 @@ import express, { type Request, type Response } from "express";
 
 // import middlewares
 import morgan from "morgan";
-import invalidJsonMiddleware from "./middlewares/invalidJsonMiddleware.ts";
-import notFoundMiddleware from "./middlewares/notFoundMiddleware.ts";
+import invalidJsonMiddleware from "./middlewares/invalidJsonMiddleware.js";
+import notFoundMiddleware from "./middlewares/notFoundMiddleware.js";
 
 // import routes
-import studentRouter_v2 from "./routes/studentsRoutes_v2.ts";
-import studentRouter_v3 from "./routes/studentsRoutes_v3.ts";
-import courseRouter_v2 from "./routes/coursesRouters_v2.ts";
-import userRouter from"./routes/userRoutes.ts";
+import studentRouter_v2 from "./routes/studentsRoutes_v2.js";
+import studentRouter_v3 from "./routes/studentsRoutes_v3.js";
+import courseRouter_v2 from "./routes/coursesRouters_v2.js";
+import userRouter from"./routes/userRoutes.js";
 
 const app = express();
 const port = 3000;

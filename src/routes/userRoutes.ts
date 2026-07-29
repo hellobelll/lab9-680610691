@@ -6,7 +6,7 @@ dotenv.config();
 import type { User,UserPayload, CustomRequest } from "../libs/types.ts";
 
 // import database
-import { users, reset_users, enrollments } from "../db/db.ts";
+import { users, reset_users, enrollments } from "../db/db.js";
 import { success } from "zod";
 import { zStudentId } from "@src/libs/zodValidators.js";
 import { zCoursePutBody } from "@src/libs/zodValidators.js";
